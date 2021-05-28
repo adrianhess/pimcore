@@ -56,7 +56,7 @@ class DataObjectParamConverter implements ParamConverterInterface
         if (!$object) {
             throw new NotFoundHttpException(sprintf('Invalid data object ID given for parameter "%s".', $param));
         } elseif (!$object->isPublished()) {
-            if (!Tool::isFrontendRequestByAdmin() || !Tool\Authentication::authenticateSession($request)) {
+            if (!(Tool::isFrontendRequestByAdmin() && Tool\Authentication::authenticateSession($request))) {
                 throw new NotFoundHttpException(sprintf('Data object for parameter "%s" is not published.', $param));
             }
         }
