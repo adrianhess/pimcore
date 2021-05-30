@@ -307,10 +307,10 @@ Last but not least, we would like to show the product picture:
 ```twig
 <div class="content">
     {% if product.picture %}
-        {{ product.picture.thumbnail("content").html }}
+        {{ product.picture.thumbnail("content").html | raw}}
     {% endif %}
 
-    {{ product.description }}
+    {{ product.description | raw }}
 </div>
 ```
 As you can see, Image is an additional class with useful attributes and functions.
